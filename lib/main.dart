@@ -19,12 +19,12 @@ class MyApp extends StatelessWidget {
 
 class Homepage extends StatelessWidget {
   List<Map<String, dynamic>> mdata = [
-    {"color": Colors.amber, "name": "anjali","age" :10},
-    {"color": Colors.blue, "name": "Durva", "age" : 20},
-    {"color": Colors.red, "name": "Divya", "age" : 23},
-    {"color": Colors.yellow, "name": "geeta", "age" : 32},
-    {"color": Colors.greenAccent, "name": "naja" ,"age" : 22},
-    {"color": Colors.purpleAccent, "name": "Pinki" , "age" : 34},
+    {"color": Colors.amber, "name": "Naja","age" :10},
+    {"color": Colors.blue, "name": "Geeta", "age" : 20},
+    {"color": Colors.red, "name": "Pinki", "age" : 23},
+    {"color": Colors.yellow, "name": "Divya", "age" : 32},
+    {"color": Colors.greenAccent, "name": "Durva" ,"age" : 22},
+    {"color": Colors.purpleAccent, "name": "Kinjal" , "age" : 34},
     {
       "color": Colors.yellow,
     }
