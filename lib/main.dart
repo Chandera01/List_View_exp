@@ -19,20 +19,77 @@ class MyApp extends StatelessWidget {
 
 class Homepage extends StatelessWidget {
   List<Map<String, dynamic>> mdata = [
-    {"color": Colors.amber, "name": "Naja","age" :10},
-    {"color": Colors.blue, "name": "Geeta", "age" : 20},
-    {"color": Colors.red, "name": "Pinki", "age" : 23},
-    {"color": Colors.yellow, "name": "Divya", "age" : 32},
-    {"color": Colors.greenAccent, "name": "Durva" ,"age" : 22},
-    {"color": Colors.purpleAccent, "name": "Kinjal" , "age" : 34},
     {
+      "color": Colors.amber,
+      "name": "Naja",
+      "msg": "Hello",
+      "Time": "11.11am",
+      "unreadcount": 2,
+      "img" : "asset/image/chandera_kinjal.jpeg",
+
+    },
+    {"color": Colors.blue,
+      "name": "Geeta",
+      "msg": "Hii",
+      "Time": "10.11am",
+      "unreadcount": 2,
+      "img" : "asset/image/chandera_kinjal.jpeg",
+    },
+    {"color": Colors.red,
+      "name": "Pinki",
+      "msg": "How are you ?",
+      "Time": "08.11am",
+      "unreadcount": 3,
+      "img" : "asset/image/chandera_kinjal.jpeg",
+
+    },
+    {"color": Colors.yellow,
+      "name": "Divya",
+      "msg": "You come to office ?",
+      "Time": "07.11am",
+      "unreadcount": 1,
+      "img" : "asset/image/chandera_kinjal.jpeg",
+
+    },
+    {"color": Colors.greenAccent,
+      "name": "Durva",
+      "msg": "Good morning",
+      "Time": "06.11am",
+      "unreadcount": 2,
+      "img" : "asset/image/chandera_kinjal.jpeg",
+
+    },
+    {"color": Colors.purpleAccent,
+      "name": "Kinjal",
+      "msg": "Thank you",
+      "Time": "Yeseterday",
+      "unreadcount": 2,
+      "img" : "asset/image/chandera_kinjal.jpeg",
+
+    },
+    {"color": Colors.purpleAccent,
+      "name": "Kinjal",
+      "msg": "Thank you",
+      "Time": "Yeseterday",
+      "unreadcount": 2,
+      "img" : "asset/image/chandera_kinjal.jpeg",
+
+    },{"color": Colors.purpleAccent,
+      "name": "Kinjal",
+      "msg": "Thank you",
+      "Time": "Yeseterday",
+      "unreadcount": 2,
+      "img" : "asset/image/chandera_kinjal.jpeg",
+
+    },
+   /* {
       "color": Colors.yellow,
-    }
+    }*/
   ];
 
   @override
   Widget build(BuildContext context) {
-    /*   List<Widget> mWidgets = [];
+   /*    List<Widget> mWidgets = [];
 
     for (int i = 0; i < mdata.length; i++) {
       mWidgets.add(Container(
@@ -49,36 +106,98 @@ class Homepage extends StatelessWidget {
     }*/
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("List"),
+        title: Text("WhatsApp",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.green.shade500),),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: mdata.map((element) {
             return Container(
+              padding: EdgeInsets.symmetric(horizontal: 12),
               margin: EdgeInsets.all(11),
-              height: 200,
               width: double.infinity,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children:
-                [
-                     Center(
-                       child: Text(
-                        element['name'] ?? "no name",
-                        style: TextStyle(color: Colors.white, fontSize: 33),
-                       ),
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 75,
+                        height: 75,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: AssetImage(element["img"]),
+                            fit: BoxFit.cover,
+                        ),
+                      ),
+                      ),
+                     SizedBox(
+                       width: 15,
                      ),
-                  Text(
-                    element['age'].toString(),style: TextStyle(fontSize: 34),
+                     Expanded(
+                       flex: 4,
+                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+
+                          Text(
+                            element['name'] ?? "no name",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            element['msg'],
+                            style: TextStyle(fontSize: 16, color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                        ],
+                                       ),
+                     ),
+                      Expanded(
+                        flex: 2,
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                         Text(element['Time']),
+                         SizedBox(
+                           height: 11,
+                         ),
+                         Container(
+                           width: 22,
+                           height: 22,
+                           decoration: BoxDecoration(
+                             color: Colors.green,
+                             shape: BoxShape.circle,
+                           ),
+                           child: Center(child: Text(element['unreadcount'].toString(),style: TextStyle(color: Colors.white),)),
+                         ),
+                        ],
+                      ),
+                      ),
+
+                  ]
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                 Container(
+                   margin: EdgeInsets.only(left: 70),
+                   width: double.infinity,
+                   height: 1,
+                   color: Colors.grey.withOpacity(0.5),
+                 )
                 ],
               ),
               decoration: BoxDecoration(
-                color: element['color'],
-                  borderRadius: BorderRadius.circular(11),
+                // color: element['color'],
+                borderRadius: BorderRadius.circular(11),
               ),
-
             );
           }).toList(),
         ),
