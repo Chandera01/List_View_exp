@@ -110,97 +110,108 @@ class Homepage extends StatelessWidget {
       appBar: AppBar(
         title: Text("WhatsApp",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.green.shade500),),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: mdata.map((element) {
-            return Container(
-              padding: EdgeInsets.symmetric(horizontal: 12),
-              margin: EdgeInsets.all(11),
-              width: double.infinity,
-              child: Column(
-                children: [
-                  Row(
+      //We use here SingleChildScrollview now replace with listview.builder
+
+      ///Note : If we need Row Scroll in ListView widget we gave a scrollDirection:Axis.horizontal
+      body: ListView.builder(
+        itemCount: mdata.length,
+        itemBuilder: (_, index){
+
+                return Container(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  margin: EdgeInsets.all(11),
+                  width: double.infinity, //400,
+                  child: Column(
                     children: [
+                      Row(
+                          children: [
+                            Container(
+                              width: 75,
+                              height: 75,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  image: AssetImage(mdata[index]["img"]),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              flex: 4,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+
+                                  Text(
+                                    mdata[index]['name'] ?? "no name",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    mdata[index]['msg'],
+                                    style: TextStyle(fontSize: 16, color: Colors.black),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Column(
+                                // mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(mdata[index]['Time']),
+                                  SizedBox(
+                                    height: 11,
+                                  ),
+                                  Container(
+                                    width: 22,
+                                    height: 22,
+                                    decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Center(child: Text(mdata[index]['unreadcount'].toString(),style: TextStyle(color: Colors.white),)),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                          ]
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Container(
-                        width: 75,
-                        height: 75,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: AssetImage(element["img"]),
-                            fit: BoxFit.cover,
-                        ),
-                      ),
-                      ),
-                     SizedBox(
-                       width: 15,
-                     ),
-                     Expanded(
-                       flex: 4,
-                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-
-                          Text(
-                            element['name'] ?? "no name",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            element['msg'],
-                            style: TextStyle(fontSize: 16, color: Colors.black),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                        ],
-                                       ),
-                     ),
-                      Expanded(
-                        flex: 2,
-                          child: Column(
-                            // mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                         Text(element['Time']),
-                         SizedBox(
-                           height: 11,
-                         ),
-                         Container(
-                           width: 22,
-                           height: 22,
-                           decoration: BoxDecoration(
-                             color: Colors.green,
-                             shape: BoxShape.circle,
-                           ),
-                           child: Center(child: Text(element['unreadcount'].toString(),style: TextStyle(color: Colors.white),)),
-                         ),
-                        ],
-                      ),
-                      ),
-
-                  ]
+                        margin: EdgeInsets.only(left: 70),
+                        width: double.infinity,
+                        height: 1,
+                        color: Colors.grey.withOpacity(0.5),
+                      )
+                    ],
                   ),
-                  SizedBox(
-                    height: 10,
+                  decoration: BoxDecoration(
+                    // color: element['color'],
+                    borderRadius: BorderRadius.circular(11),
                   ),
-                 Container(
-                   margin: EdgeInsets.only(left: 70),
-                   width: double.infinity,
-                   height: 1,
-                   color: Colors.grey.withOpacity(0.5),
-                 )
-                ],
-              ),
-              decoration: BoxDecoration(
-                // color: element['color'],
-                borderRadius: BorderRadius.circular(11),
-              ),
-            );
-          }).toList(),
-        ),
+                );
+        },                                                      // scrollDirection: Axis.horizontal,
+
+
+
+        /*children: mdata.map((element) {
+          return ;
+        }).toList(),*/
+
+
       ),
     );
   }
